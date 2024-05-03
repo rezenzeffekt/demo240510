@@ -1,6 +1,3 @@
-# We import a method from the  modules to address environment variables and 
-# we use that method in a function that will return the variables we need from .env 
-# to a dictionary we call sql_config
 
 from dotenv import dotenv_values
 
@@ -14,12 +11,8 @@ def get_sql_config():
     sql_config = {key:dotenv_dict[key] for key in needed_keys if key in dotenv_dict}
     return sql_config
 
-# Import sqlalchemy and pandas - do this only when instructed
-
 import pandas as pd
 import sqlalchemy 
-
-# Insert the get_data() function definition below - do this only when instructed in the notebook
 
 def get_data(sql_query):
     ''' 
@@ -33,8 +26,6 @@ def get_data(sql_query):
         results = conn.execute(sql_query)
         return results.fetchall()
 
-# Insert the get_dataframe() function definition below - do this only when instructed in the notebook
-
 def get_dataframe(sql_query):
     ''' 
     Connect to the PostgreSQL database server, 
@@ -46,8 +37,6 @@ def get_dataframe(sql_query):
                         )
     results = pd.read_sql_query(sql=sql_query, con=engine)
     return results
-
-# Insert the get_engine() function definition below - when instructed
 
 def get_engine():
     sql_config = get_sql_config()
