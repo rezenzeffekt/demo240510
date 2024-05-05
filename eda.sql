@@ -60,3 +60,28 @@ WHERE value < 0
 -- year's total balance
 SELECT SUM(value) 
 FROM output_01 
+
+-- year's total balance calculated by subtracting the withdrawals from the deposits
+WITH 
+de AS (SELECT SUM(value) AS d 
+FROM output_01 
+WHERE value > 0
+),
+wi AS (SELECT SUM(value) AS w 
+FROM output_01 
+WHERE value < 0
+)
+SELECT wi.w+de.d 
+FROM de, wi
+
+
+
+
+
+
+
+
+
+
+
+
