@@ -74,6 +74,11 @@ WHERE value < 0
 SELECT wi.w+de.d 
 FROM de, wi
 
+-- show all 'Gehalt'
+SELECT *
+FROM output_01
+WHERE description = 'Gehalt'
+
 
 
 
